@@ -1,4 +1,4 @@
-﻿# Requires -RunAsAdministrator
+﻿#Requires -RunAsAdministrator
 
 # ============================================
 # B2B - NTFS Full Control - Interactive PowerShell Script
@@ -369,4 +369,5 @@ if ($restoreChoice -eq "Y") {
 #}
 
 Write-Host ""
+
 Read-Host "Press Enter to exit"
