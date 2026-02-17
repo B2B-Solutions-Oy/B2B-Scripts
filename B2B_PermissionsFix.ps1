@@ -29,11 +29,6 @@ function Format-Elapsed {
     }
 }
 
-    $output = & $Command 2>&1
-    if ($Verbose) { $output | ForEach-Object { Write-Host $_ } }
-    $output | Out-File -Append -FilePath $LogFile -Encoding UTF8
-
-
 $currentUser    = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
 $totalStopwatch = [System.Diagnostics.Stopwatch]::new()
 $stepStopwatch  = [System.Diagnostics.Stopwatch]::new()
@@ -311,9 +306,9 @@ Write-Host ""
 Write-Host "  Total Elapsed  : $totalElapsed" -ForegroundColor White
 Write-Host "  Log File       : $logFile" -ForegroundColor White
 Write-Host "  ACL Backup     : $backupFile" -ForegroundColor White
-Write-Log "  Total Elapsed  : $totalElapsed" -ForegroundColor White
+Write-Log "  Total Elapsed  : $totalElapsed"
 Write-Log "  Log File       : $logFile" -ForegroundColor White
-Write-Log "  ACL Backup     : $backupFile" -ForegroundColor White
+Write-Log "  ACL Backup     : $backupFile"
 Write-Host ""
 
 # ---- Ask about restore ----
@@ -361,15 +356,7 @@ if ($restoreChoice -eq "Y") {
     Write-Host "  To manually restore later, run:" -ForegroundColor Gray
     Write-Host "  $restoreCmd" -ForegroundColor White
 }
-# } else {
-#   Write-Host ""
-#    Write-Host "  No restore performed. Your backup file is saved at:" -ForegroundColor Gray
-#    Write-Host "  $backupFile" -ForegroundColor Gray
-#    Write-Host ""
-#    Write-Host "  To manually restore later, run:" -ForegroundColor Gray
-#    $parentPath = Split-Path $targetPath -Parent
-#    Write-Host "  icacls `"$parentPath`" /restore `"$backupFile`" /C" -ForegroundColor White
-#}
 
 Write-Host ""
 Read-Host "Press Enter to exit"
+
