@@ -1,4 +1,4 @@
-﻿#Requires -RunAsAdministrator
+#Requires -RunAsAdministrator
 
 # ============================================
 # B2B - NTFS Full Control - Interactive PowerShell Script
@@ -311,6 +311,9 @@ Write-Host ""
 Write-Host "  Total Elapsed  : $totalElapsed" -ForegroundColor White
 Write-Host "  Log File       : $logFile" -ForegroundColor White
 Write-Host "  ACL Backup     : $backupFile" -ForegroundColor White
+Write-Log "  Total Elapsed  : $totalElapsed" -ForegroundColor White
+Write-Log "  Log File       : $logFile" -ForegroundColor White
+Write-Log "  ACL Backup     : $backupFile" -ForegroundColor White
 Write-Host ""
 
 # ---- Ask about restore ----
@@ -369,5 +372,4 @@ if ($restoreChoice -eq "Y") {
 #}
 
 Write-Host ""
-
 Read-Host "Press Enter to exit"
