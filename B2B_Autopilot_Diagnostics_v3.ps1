@@ -41,7 +41,10 @@ if ($runCommunity -match '^(y|yes)$') {
 
     if (-not (Test-Path $apScript)) {
         Write-Host "Could not find Get-AutopilotDiagnosticsCommunity.ps1 in: $PSScriptRoot" -ForegroundColor Red
-    } else {
+        Write-Host "Download Get-AutopilotDiagnosticsCommunity.ps1, opening browser..."
+        Start-process "https://github.com/andrew-s-taylor/WindowsAutopilotInfo/blob/main/Community%20Version%2FGet-AutopilotDiagnosticsCommunity.ps1"
+        Write-Host "Close window and run script again after download if you wish to run ALL diagnostics. Waiting 5 seconds..."
+        Start-Sleep -Seconds 5
         Write-Host ""
         Write-Host "Running: $apScript" -ForegroundColor Yellow
         Write-Host "Logging output to: $logFile" -ForegroundColor DarkGray
@@ -89,7 +92,7 @@ if ($runCommunity -match '^(y|yes)$') {
             Write-Host $err -ForegroundColor Red
             $err | Out-File -FilePath $logFile -Append -Encoding UTF8
         }
-
+        Start-Sleep -Seconds 5
         Write-Host "-------------------------------------------" -ForegroundColor DarkGray
         Write-Host "Log saved to: $logFile" -ForegroundColor Green
     }
